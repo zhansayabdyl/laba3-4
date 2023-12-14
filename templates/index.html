@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ипотечный калькулятор</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Ипотечный калькулятор</h1>
+    <form action="/calculate" method="post">
+        <label for="principal">Сумма кредита:</label>
+        <input type="number" name="principal" required>
+        <br>
+        <label for="annual_rate">Годовая процентная ставка:</label>
+        <input type="number" name="annual_rate" step="0.1" required>
+        <br>
+        <label for="years">Срок кредита в годах:</label>
+        <input type="number" name="years" required>
+        <br>
+        <button type="submit">Рассчитать</button>
+    </form>
+    {% if result %}
+        <p>{{ result }}</p>
+    {% endif %}
+</body>
+</html>
