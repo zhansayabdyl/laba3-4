@@ -4,6 +4,10 @@ app = Flask(__name__)
 
 
 def calculate_mortgage(principal, annual_rate, years):
+# Проверяем, что значения положительные
+    if principal <= 0 or annual_rate < 0 or years <= 0:
+        raise ValueError("Все значения должны быть положительными")
+
     # Преобразуем годовую процентную ставку в месячную и количество лет в месяцы
     monthly_rate = annual_rate / 100 / 12
     num_payments = years * 12
